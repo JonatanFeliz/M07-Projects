@@ -5,6 +5,9 @@ namespace Controller;
 require_once(realpath(__DIR__ . '/../model/model.php'));
 use function Model\get_csv_path;
 use function Model\read_table;
+use function Model\get_images;
+use function Model\get_blog_contents;
+use function Model\get_web_service_data;
 
 require_once(realpath(__DIR__ . '/../view/viewlib.php'));
 use function View\get_template_path;
@@ -31,7 +34,10 @@ function index(): string {
 // ----------------------------------------------------------------------------
 function blog(): string {
 
-    $blog_body = render_template(get_template_path('/body/blog'), []);
+    $news_array = get_blog_contents();
+
+    $blog_body = render_template(get_template_path('/body/blog'), 
+                                  ['news_array' => $news_array]);
     $blog_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Blog',
                                   'body'  => $blog_body]);
@@ -41,7 +47,12 @@ function blog(): string {
 // ----------------------------------------------------------------------------
 function gallery(): string {
 
-    $gallery_body = render_template(get_template_path('/body/gallery'), []);
+    // 1. Get data
+    $web_links = get_images();
+
+    $gallery_body = render_template(get_template_path('/body/gallery'),
+                                     ['images_array' => $web_links]);
+
     $gallery_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Gallery',
                                   'body'  => $gallery_body]);
@@ -62,6 +73,23 @@ function table(): string {
                                  ['title' => 'Table',
                                   'body'  => $data_body]);
     return $data_view;
+}
+
+
+// ----------------------------------------------------------------------------
+function web_service(): string {
+
+    // 1. Get data
+    $webs_array = get_web_service_data();
+
+    // 2. Fill template with data
+    $web_service_body = render_template(get_template_path('/body/web-service'),
+                                 ['webs_array' => $webs_array]);
+
+    $web_service_view = render_template(get_template_path('/skeleton/skeleton'),
+                                 ['title' => 'Web-Service',
+                                  'body'  => $web_service_body]);
+    return $web_service_view;
 }
 
 

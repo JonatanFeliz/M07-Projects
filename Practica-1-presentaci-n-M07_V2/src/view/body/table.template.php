@@ -9,4 +9,4 @@
      echo View\get_html_body($football_table->body);
      ?>
 
-</table>
+</table> 
