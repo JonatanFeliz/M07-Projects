@@ -72,6 +72,15 @@ function get_blog_contents(): array{
 
 }
 
+
+function get_news():array{
+    $news_to_array = fn ($json_file)=> read_json($json_file);
+    $json_filenames = glob(__DIR__."/../../db/*.json");
+    $news = array_map($news_to_array,$json_filenames);
+    sort($news);
+    return $news;
+}
+
 // ############################################################################
 // Web Service functions
 // ############################################################################

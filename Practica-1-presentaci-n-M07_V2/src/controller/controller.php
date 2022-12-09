@@ -7,6 +7,7 @@ use function Model\get_csv_path;
 use function Model\read_table;
 use function Model\get_images;
 use function Model\get_blog_contents;
+use function Model\get_news;
 use function Model\get_web_service_data;
 
 require_once(realpath(__DIR__ . '/../view/viewlib.php'));
@@ -34,7 +35,7 @@ function index(): string {
 // ----------------------------------------------------------------------------
 function blog(): string {
 
-    $news_array = get_blog_contents();
+    $news_array = get_news();
 
     $blog_body = render_template(get_template_path('/body/blog'), 
                                   ['news_array' => $news_array]);
@@ -50,6 +51,7 @@ function gallery(): string {
     // 1. Get data
     $web_links = get_images();
 
+    // 2. Fill template with data
     $gallery_body = render_template(get_template_path('/body/gallery'),
                                      ['images_array' => $web_links]);
 

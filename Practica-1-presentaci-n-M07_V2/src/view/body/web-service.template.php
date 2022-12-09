@@ -2,21 +2,26 @@
 <div class="container">
     <div class="row">
     <?php
-        $data = $webs_array['data'];
 
-        $first_data = $data[0];
+        $count = count($webs_array['data']);
 
-        $id         = $first_data['id'];
-        $city       = $first_data['city'];
-        $full_name  = $first_data['full_name'];
+        for ($i=0; $i < $count; $i++) { 
+            $data = $webs_array['data'];
 
-        echo
-        "<div class='card' style='width: 40rem;'>
-            <div class='card-body'>
-            <h5 class='card-title'>$city</h5>
-            <p class='card-text'>$full_name</p>
-            </div>
-        </div>" . PHP_EOL;
+            $first_data = $data[$i];
+
+            $id         = $first_data['id'];
+            $city       = $first_data['city'];
+            $full_name  = $first_data['full_name'];
+
+            echo
+            "<div class='card' style='width: 40rem;'>
+                <div class='card-body'>
+                <h5 class='card-title'>$city</h5>
+                <p class='card-text'>$full_name</p>
+                </div>
+            </div>" . PHP_EOL;
+        }
         
     ?>
     </div>

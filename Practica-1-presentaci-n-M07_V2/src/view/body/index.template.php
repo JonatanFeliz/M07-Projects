@@ -29,6 +29,7 @@
   </div>
 </nav>
   
+<p id="iden">PARJ | Jonatan Feliz - Anthony Reyes - Pau Martinez - Ruyou Hu Ye</p>
 <br>
 <div class="row">
     <div class="col-md-3 col-sm-6">
@@ -79,4 +80,4 @@
 
 
 
-        <p id="iden">PARJ | Jonatan Feliz - Anthony Reyes - Pau Martinez - Ruyou Hu Ye</p>
+        
