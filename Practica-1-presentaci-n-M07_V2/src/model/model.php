@@ -75,9 +75,20 @@ function get_blog_contents(): array{
 
 function get_news():array{
     $news_to_array = fn ($json_file)=> read_json($json_file);
-    $json_filenames = glob(__DIR__."/../../db/*.json");
-    $news = array_map($news_to_array,$json_filenames);
-    sort($news);
+    // $json_filenames = glob(__DIR__."/../../db/*.json");
+    // $news = array_map($news_to_array,$json_filenames);
+    // sort($news);
+
+    // array_map($news_to_array, glob_de_jsons)
+
+    // $news_to_array = fn ($json_file)=> read_json($json_file);
+    // $json_filenames = glob(__DIR__."/../../db/*.json");
+    // $json_filename = __DIR__."/../../db/news.json";
+    // $news = $news_to_array($json_filename);
+
+    $json_filename = __DIR__."/../../db/news.json";
+    $news = read_json($json_filename);
+
     return $news;
 }
 

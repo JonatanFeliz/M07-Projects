@@ -11,7 +11,6 @@
             <p class='card-text'>$body</p>
             </div>
         </div>" . PHP_EOL;
-        
         }
     ?>
     </div>
