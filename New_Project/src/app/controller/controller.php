@@ -38,7 +38,7 @@ function index(Request $request, Context $context): array {
 
     $index_body = render_template(get_template_path('/body/index'), []);
     $index_view = render_template(get_template_path('/skeleton/skeleton'),
-                                 ['title' => 'WebApp',
+                                 ['title' => 'WebApp - Diari Deportiu',
                                   'body'  => $index_body]);
 
     $response   = new Response($index_view);
@@ -76,7 +76,7 @@ function gallery(Request $request, Context $context): array {
 
     $gallery_body = render_template(get_template_path('/body/gallery'), []);
     $gallery_view = render_template(get_template_path('/skeleton/skeleton'),
-                                 ['title' => 'Gallery',
+                                 ['title' => 'Galeria',
                                   'body'  => $gallery_body]);
 
     $response = new Response($gallery_view);
@@ -87,7 +87,7 @@ function gallery(Request $request, Context $context): array {
 function data(Request $request, Context $context): array {
 
     // 1. Get data
-    $manga_table = read_table(get_csv_path('manga'));
+    $manga_table = read_table(get_csv_path('liga'));
 
     // 2. Fill template with data
     $data_body = render_template(get_template_path('/body/data'),
@@ -124,6 +124,20 @@ function login(Request $request, Context $context): array {
         return [$response, $context];
     }
 
+}
+
+// ----------------------------------------------------------------------------
+function register(Request $request, Context $context): array {
+    if       ($request->method == 'GET') {
+       
+        $login_body = render_template(get_template_path('/body/register'),[]);
+        $login_view = render_template(get_template_path('/skeleton/skeleton'),
+                                      ['title' => 'Registre',
+                                       'body'  => $login_body]);
+
+        $response = new Response($login_view);
+        return [$response, $context];
+    }
 }
 
 // ----------------------------------------------------------------------------

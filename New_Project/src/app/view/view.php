@@ -82,7 +82,7 @@ function render_template(string $_TEMPLATE_FILENAME, array $_TEMPLATE_VARS): str
 // ----------------------------------------------------------------------------
 function get_html_header(array $header): string {
 
-     $add_th_tags = fn ($column_name) => '<th>'.htmlspecialchars($column_name).'</th>';
+     $add_th_tags = fn ($column_name) => '<th scope="col">'.htmlspecialchars($column_name).'</th>';
 
      $th_tags_array = array_map($add_th_tags, $header);
      $th_tags_str   = implode(' ', $th_tags_array);
