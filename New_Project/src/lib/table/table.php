@@ -135,6 +135,16 @@ function read_csv(string $csv_filename, string $separator): Table {
     return $result;
 }
 
+
+function read_csv2(string $csv_filename, string $separator): array {
+
+    $csv_str         = file_get_contents($csv_filename);
+    $trimmed_csv_str = trim($csv_str);
+    $data_matrix     = split_csv_str($trimmed_csv_str, $separator);
+
+    return $data_matrix;
+}
+
 // ----------------------------------------------------------------------------
 function write_csv(Table $table, string $csv_filename, string $separator = ' | '): void {
 

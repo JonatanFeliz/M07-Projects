@@ -20,6 +20,7 @@ require_once(get_model_dir() . '/model.php');
 use function Model\get_csv_path;
 use function Model\read_table;
 use function Model\add_blog_message;
+use function Model\get_images;
 
 require_once(get_view_dir() . '/view.php');
 use function View\get_template_path;
@@ -74,7 +75,11 @@ function blog(Request $request, Context $context): array {
 // ----------------------------------------------------------------------------
 function gallery(Request $request, Context $context): array {
 
-    $gallery_body = render_template(get_template_path('/body/gallery'), []);
+    // 1. Get data
+    $web_links = get_images("gallery");
+
+    $gallery_body = render_template(get_template_path('/body/gallery'), 
+                                    ['images_array' => $web_links]);
     $gallery_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Galeria',
                                   'body'  => $gallery_body]);

@@ -1,5 +1,9 @@
 <section>
+    
     <div class="container">
+        <div class="text-end">
+            <a href="/index" class="btn btn-success mt-4 me-5">Torna a Home</a>
+        </div>
         <div class="w-25 position-absolute top-50 start-50 translate-middle ">
             <img class="mx-auto d-block mb-3" src="/img/logo.png" width="60px" height="80px" alt="Logo">
 

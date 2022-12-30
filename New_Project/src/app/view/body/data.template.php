@@ -21,7 +21,7 @@
                     <a class="nav-link text-white" href="/gallery">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/data">Data</a>
+                    <a class="nav-link text-white" href="#">Data</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="/web-service">Web Service</a>

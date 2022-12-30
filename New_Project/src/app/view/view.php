@@ -24,7 +24,7 @@ use function Utils\clone_deeply;
 function prettify_blog(Table $blog): Table {
 
     // 1. Helper functions
-    $reformat_timestamp = fn ($timestamp)   => DTI::createFromFormat(DTI::RFC3339, $timestamp)->format('Y-m-d H:i:s');
+    $reformat_timestamp = fn ($timestamp)   => DTI::createFromFormat(DTI::RFC3339, $timestamp)->format('Y-m-d');
     $reformat_row       = fn ($row)         => ['Timestamp' => $reformat_timestamp($row['Timestamp']),
                                                 'Message'   => $row['Message'] ];
 
@@ -104,11 +104,38 @@ function get_html_row(array $row): string {
      return $html_row;
 }
 
+
+function get_html_row2(array $row): string {
+
+     $add_td_tags = fn ($row_field)   => htmlspecialchars($row_field);
+
+     $td_tags_array = array_map($add_td_tags, $row);
+     //print_r($td_tags_array);
+     $time = $td_tags_array["Timestamp"];
+     $new = $td_tags_array["Message"];
+     $html_row   = "<div class='card col-8 mb-3'> 
+                         <h5 class='card-header'> $time</h5>
+                         <div class='card-body'>
+                              <p class='card-text'> $new </p>
+                         </div> 
+                    </div>" . PHP_EOL;
+
+     return $html_row;
+}
+
 // 3. Convert table body to string
 // ----------------------------------------------------------------------------
 function get_html_body(array $body): string {
 
      $html_row_array = array_map('View\get_html_row', $body);
+     $html_body      = implode('', $html_row_array);
+
+     return $html_body;
+}
+
+function get_html_body2(array $body): string {
+
+     $html_row_array = array_map('View\get_html_row2', $body);
      $html_body      = implode('', $html_row_array);
 
      return $html_body;

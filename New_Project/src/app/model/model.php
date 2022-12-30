@@ -56,3 +56,17 @@ function add_blog_message(string $csv_filename, string $message): void {
 }
 
 // ----------------------------------------------------------------------------
+function get_images(string $folder): array {
+    $path = __DIR__ . "/../../../public/img/$folder/*";
+
+    $path_image_array = glob($path);
+
+    $web_links = array();
+
+    foreach ($path_image_array as $image) {
+        $filename = basename($image);
+        $web_links[] = "/img/$folder/" . $filename;
+    }
+
+    return $web_links;
+}

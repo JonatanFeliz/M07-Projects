@@ -49,7 +49,7 @@ function blog(): string {
 function gallery(): string {
 
     // 1. Get data
-    $web_links = get_images();
+    $web_links = get_images("gallery");
 
     // 2. Fill template with data
     $gallery_body = render_template(get_template_path('/body/gallery'),
