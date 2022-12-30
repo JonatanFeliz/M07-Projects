@@ -70,3 +70,15 @@ function get_images(string $folder): array {
 
     return $web_links;
 }
+
+// ----------------------------------------------------------------------------
+function add_new_user(string $csv_filename, string $user, string $password, string $role){
+    // 1. Read Table
+    $user_data = Table::readCSV($csv_filename);
+
+    // 3. Append new row
+    $user_data->prependRow([$user , $password, $role]);
+
+    // 4. Write Table
+    $user_data->writeCSV($csv_filename);
+}

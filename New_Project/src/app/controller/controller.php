@@ -20,12 +20,14 @@ require_once(get_model_dir() . '/model.php');
 use function Model\get_csv_path;
 use function Model\read_table;
 use function Model\add_blog_message;
+use function Model\add_new_user;
 use function Model\get_images;
 
 require_once(get_view_dir() . '/view.php');
 use function View\get_template_path;
 use function View\render_template;
 use function View\prettify_blog;
+use function View\show_modal;
 
 
 
@@ -126,6 +128,8 @@ function login(Request $request, Context $context): array {
         $username = $request->parameters['username'];
         $password = $request->parameters['password'];
 
+        //validate user
+
         $response = new Response($username . PHP_EOL . $password . PHP_EOL);
         return [$response, $context];
     }
@@ -134,7 +138,9 @@ function login(Request $request, Context $context): array {
 
 // ----------------------------------------------------------------------------
 function register(Request $request, Context $context): array {
-    if       ($request->method == 'GET') {
+
+    if       ($request->method == 'GET') 
+    {
        
         $login_body = render_template(get_template_path('/body/register'),[]);
         $login_view = render_template(get_template_path('/skeleton/skeleton'),
@@ -142,6 +148,23 @@ function register(Request $request, Context $context): array {
                                        'body'  => $login_body]);
 
         $response = new Response($login_view);
+        return [$response, $context];
+    }
+    
+    elseif ($request->method == 'POST') 
+    {
+        $username = $request->parameters['r_username'];
+        $password = $request->parameters['r_password'];
+        $role     = $request->parameters['role'];
+
+        //add user to csv
+        add_new_user(get_csv_path('users'), $username, $password, $role);
+
+        //redirect to login
+
+
+
+        $response = new Response($username . PHP_EOL . $password . PHP_EOL . $role);
         return [$response, $context];
     }
 }

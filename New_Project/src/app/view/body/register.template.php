@@ -14,17 +14,17 @@
 
                     <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Usuari:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="r_username" class="form-control">
                     </div>
 
                     <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Contrasenya:</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="r_password" class="form-control" id="exampleInputPassword1">
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputRol1" class="form-label">Rol:</label>
-                        <select class="form-select">
+                        <select class="form-select" name="role">
                             <option selected disabled>Selecciona un rol</option>
                             <option value="visitant">Visitant</option>
                             <option value="user">User</option>
