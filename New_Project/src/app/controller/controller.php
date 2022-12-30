@@ -37,7 +37,7 @@ use function View\prettify_blog;
 // ----------------------------------------------------------------------------
 function index(Request $request, Context $context): array {
 
-    $index_body = render_template(get_template_path('/body/index'), []);
+    $index_body = render_template(get_template_path('/body/visitant/index'), []);
     $index_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'WebApp - Diari Deportiu',
                                   'body'  => $index_body]);
@@ -61,7 +61,7 @@ function blog(Request $request, Context $context): array {
     $pretty_blog = prettify_blog($blog);
 
     // 4. Fill template with data
-    $blog_body = render_template(get_template_path('/body/blog'),
+    $blog_body = render_template(get_template_path('/body/visitant/blog'),
                                  ['blog_table' => $pretty_blog]);
     $blog_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Blog',
@@ -78,7 +78,7 @@ function gallery(Request $request, Context $context): array {
     // 1. Get data
     $web_links = get_images("gallery");
 
-    $gallery_body = render_template(get_template_path('/body/gallery'), 
+    $gallery_body = render_template(get_template_path('/body/visitant/gallery'), 
                                     ['images_array' => $web_links]);
     $gallery_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Galeria',
@@ -95,7 +95,7 @@ function data(Request $request, Context $context): array {
     $manga_table = read_table(get_csv_path('liga'));
 
     // 2. Fill template with data
-    $data_body = render_template(get_template_path('/body/data'),
+    $data_body = render_template(get_template_path('/body/visitant/data'),
                                  ['manga_table' => $manga_table]);
 
     $data_view = render_template(get_template_path('/skeleton/skeleton'),
@@ -103,6 +103,7 @@ function data(Request $request, Context $context): array {
                                   'body'  => $data_body]);
 
     $response = new Response($data_view);
+    
     return [$response, $context];
 }
 
@@ -148,7 +149,7 @@ function register(Request $request, Context $context): array {
 // ----------------------------------------------------------------------------
 function web_service(Request $request, Context $context): array {
 
-    $web_service_body = render_template(get_template_path('/body/web-service'), []);
+    $web_service_body = render_template(get_template_path('/body/visitant/web-service'), []);
     $web_service_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Data',
                                   'body'  => $web_service_body]);

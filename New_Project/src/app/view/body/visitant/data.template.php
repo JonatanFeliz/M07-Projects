@@ -46,7 +46,7 @@
                          <table class="table table-success table-striped text-center">
                               <?php
 
-                                   require_once(__DIR__ . '/../../config.php');
+                                   require_once(__DIR__ . '/../../../config.php');
                                    use function Config\get_view_dir;
 
                                    require_once(get_view_dir() . '/view.php');
