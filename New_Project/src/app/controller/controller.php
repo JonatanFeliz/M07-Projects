@@ -6,6 +6,7 @@ require_once(__DIR__ . '/../config.php');
 use function Config\get_lib_dir;
 use function Config\get_model_dir;
 use function Config\get_view_dir;
+use function Controller\login as ControllerLogin;
 
 require_once(get_lib_dir() . '/request/request.php');
 use Request\Request;
@@ -22,6 +23,7 @@ use function Model\read_table;
 use function Model\add_blog_message;
 use function Model\add_new_user;
 use function Model\get_images;
+use function Model\read_table2;
 
 require_once(get_view_dir() . '/view.php');
 use function View\get_template_path;
@@ -113,7 +115,7 @@ function data(Request $request, Context $context): array {
 function login(Request $request, Context $context): array {
 
    
-    if       ($request->method == 'GET') {
+    if($request->method == 'GET') {
        
         $login_body = render_template(get_template_path('/body/login'),[]);
         $login_view = render_template(get_template_path('/skeleton/skeleton'),
@@ -127,10 +129,24 @@ function login(Request $request, Context $context): array {
 
         $username = $request->parameters['username'];
         $password = $request->parameters['password'];
+        $rol      = "";
 
         //validate user
+        $login = read_table(get_csv_path('users'));
 
-        $response = new Response($username . PHP_EOL . $password . PHP_EOL);
+        $body_users = $login->body;
+
+        // iterate .csv to find or not user 
+        foreach ($body_users as $user) {
+
+            if($user["Username"] == $username and $user["Password"] == $password){
+                $rol = $user["Rol"];
+                $response = new Response("hola el usuario $username tiene el rol de $rol");
+            }
+        }
+
+
+        //$response = new Response($username . PHP_EOL . $password . PHP_EOL);
         return [$response, $context];
     }
 
@@ -139,7 +155,7 @@ function login(Request $request, Context $context): array {
 // ----------------------------------------------------------------------------
 function register(Request $request, Context $context): array {
 
-    if       ($request->method == 'GET') 
+    if($request->method == 'GET') 
     {
        
         $login_body = render_template(get_template_path('/body/register'),[]);
@@ -150,7 +166,7 @@ function register(Request $request, Context $context): array {
         $response = new Response($login_view);
         return [$response, $context];
     }
-    
+
     elseif ($request->method == 'POST') 
     {
         $username = $request->parameters['r_username'];
