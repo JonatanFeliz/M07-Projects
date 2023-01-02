@@ -212,7 +212,7 @@ function web_service(Request $request, Context $context): array {
 
     $web_service_body = render_template(get_template_path('/body/web-service'), []);
     $web_service_view = render_template(get_template_path('/skeleton/skeleton'),
-                                 ['title' => 'Data',
+                                 ['title' => 'Web Service',
                                   'body'  => $web_service_body]);
 
     $response = new Response($web_service_view);
