@@ -28,7 +28,7 @@
                     </li>
                </ul>
                <form class="d-flex">
-                    <img src="./user.png" width="64px" height="66px" alt="User">
+                    <a href="/login" class="btn btn-success" type="submit">Login</a>
                </form>
           </div>
      </div>
@@ -56,7 +56,7 @@
           <div class="row justify-content-center">
                <?php
 
-                    require_once(__DIR__ . '/../../../config.php');
+                    require_once(__DIR__ . '/../../config.php');
                     use function Config\get_view_dir;
 
                     require_once(get_view_dir() . '/view.php');

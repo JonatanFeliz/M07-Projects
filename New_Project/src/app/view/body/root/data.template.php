@@ -46,7 +46,7 @@
                          <table class="table table-success table-striped text-center">
                               <?php
 
-                                   require_once(__DIR__ . '/../../config.php');
+                                   require_once(__DIR__ . '/../../../config.php');
                                    use function Config\get_view_dir;
 
                                    require_once(get_view_dir() . '/view.php');
@@ -61,7 +61,47 @@
                               ?>
                          </table>
                     </div>
-               </div>
+                </div>
+                <div class="col-12">
+                    <div class="w-25 mx-auto mt-5">
+                        <form action="#" method="post">
+                            <div class=" px-5 py-4 shadow-lg p-3 mb-5 bg-body rounded">
+                            <h2 class="text-center mb-3">Nou Equip</h2>
+
+                            <div class="mb-3">
+                                <label class="form-label">Posicio:</label>
+                                <input type="number" name="position" class="form-control">
+                                <div class="form-text">Numero superior a l'ultima posicio.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Equip:</label>
+                                <input type="text" name="team" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Punts:</label>
+                                <input type="number" name="points" class="form-control">
+                                <div class="form-text">Punts inferior a l'ultima posicio.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Esborrar una entrada:</label>
+                                <select class="form-select" name="delete">
+                                    <option selected disabled>Selecciona</option>
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
           </div>
      </div>
 </section>

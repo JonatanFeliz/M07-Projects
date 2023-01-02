@@ -23,7 +23,8 @@ use function Model\read_table;
 use function Model\add_blog_message;
 use function Model\add_new_user;
 use function Model\get_images;
-use function Model\read_table2;
+use function Model\add_new_team;
+use function Model\delete_team;
 
 require_once(get_view_dir() . '/view.php');
 use function View\get_template_path;
@@ -41,7 +42,7 @@ use function View\show_modal;
 // ----------------------------------------------------------------------------
 function index(Request $request, Context $context): array {
 
-    $index_body = render_template(get_template_path('/body/visitant/index'), []);
+    $index_body = render_template(get_template_path('/body/index'), []);
     $index_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'WebApp - Diari Deportiu',
                                   'body'  => $index_body]);
@@ -65,7 +66,7 @@ function blog(Request $request, Context $context): array {
     $pretty_blog = prettify_blog($blog);
 
     // 4. Fill template with data
-    $blog_body = render_template(get_template_path('/body/visitant/blog'),
+    $blog_body = render_template(get_template_path('/body/blog'),
                                  ['blog_table' => $pretty_blog]);
     $blog_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Blog',
@@ -82,7 +83,7 @@ function gallery(Request $request, Context $context): array {
     // 1. Get data
     $web_links = get_images("gallery");
 
-    $gallery_body = render_template(get_template_path('/body/visitant/gallery'), 
+    $gallery_body = render_template(get_template_path('/body/gallery'), 
                                     ['images_array' => $web_links]);
     $gallery_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Galeria',
@@ -95,18 +96,34 @@ function gallery(Request $request, Context $context): array {
 // ----------------------------------------------------------------------------
 function data(Request $request, Context $context): array {
 
+    if ($request->method == 'POST'){
+        $position = $request->parameters['position'];
+        $team     = $request->parameters['team'];
+        $points   = $request->parameters['points'];
+        $delete   = $request->parameters['delete'];
+
+        if ($delete != "si") {
+            $delete = "no";
+        }
+
+        add_new_team( get_csv_path('liga'), $position, $team, $points, $delete );
+    }
+
     // 1. Get data
     $manga_table = read_table(get_csv_path('liga'));
 
     // 2. Fill template with data
-    $data_body = render_template(get_template_path('/body/visitant/data'),
-                                 ['manga_table' => $manga_table]);
+    $data_body = render_template(get_template_path('/body/data'),
+                                ['manga_table' => $manga_table]);
 
     $data_view = render_template(get_template_path('/skeleton/skeleton'),
-                                 ['title' => 'Data',
-                                  'body'  => $data_body]);
+                                ['title' => 'Data',
+                                'body'  => $data_body]);
 
-    $response = new Response($data_view);
+    $response  = new Response($data_view);
+    
+
+    
     
     return [$response, $context];
 }
@@ -142,6 +159,11 @@ function login(Request $request, Context $context): array {
             if($user["Username"] == $username and $user["Password"] == $password){
                 $rol = $user["Rol"];
                 $response = new Response("hola el usuario $username tiene el rol de $rol");
+
+                if      ($rol == "visitant"){}
+                else if ($rol == "client")  {}
+                else if ($rol == "admin")   {}
+                else if ($rol == "root")    {}
             }
         }
 
@@ -188,7 +210,7 @@ function register(Request $request, Context $context): array {
 // ----------------------------------------------------------------------------
 function web_service(Request $request, Context $context): array {
 
-    $web_service_body = render_template(get_template_path('/body/visitant/web-service'), []);
+    $web_service_body = render_template(get_template_path('/body/web-service'), []);
     $web_service_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Data',
                                   'body'  => $web_service_body]);

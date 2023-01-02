@@ -24,12 +24,44 @@
                     <a class="nav-link text-white" href="/data">Data</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Web Service</a>
+                    <a class="nav-link text-white" href="/web-service">Web Service</a>
                 </li>
             </ul>
             <form class="d-flex">
-                <img src="/img/user.png" width="64px" height="66px" alt="User">
+                <a href="/login" class="btn btn-success" type="submit">Login</a>
             </form>
         </div>
     </div>
 </nav>
+
+<!--Body-->
+<section>
+    <div class="container">
+
+        <h1 class="text-center mt-5"><span class="text-info border-bottom border-primary border-5">La Liga - Classificació</span></h1>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="w-50 mx-auto mt-5">
+                        <table class="table table-success table-striped text-center">
+                            <?php
+
+                                require_once(__DIR__ . '/../../config.php');
+                                use function Config\get_view_dir;
+
+                                require_once(get_view_dir() . '/view.php');
+
+                                echo "<thead>";
+                                    echo View\get_html_header($manga_table->header);
+                                echo "</thead>";
+
+                                echo "<tbody>";
+                                echo View\get_html_body($manga_table->body);
+                                echo"</tbody>";
+                            ?>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

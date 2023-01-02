@@ -28,7 +28,7 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <img src="/img/user.png" width="64px" height="66px" alt="User">
+                <a href="/login" class="btn btn-success" type="submit">Login</a>
             </form>
         </div>
     </div>

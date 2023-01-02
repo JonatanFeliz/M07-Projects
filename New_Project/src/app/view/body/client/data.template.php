@@ -46,7 +46,7 @@
                          <table class="table table-success table-striped text-center">
                               <?php
 
-                                   require_once(__DIR__ . '/../../config.php');
+                                   require_once(__DIR__ . '/../../../config.php');
                                    use function Config\get_view_dir;
 
                                    require_once(get_view_dir() . '/view.php');
@@ -62,6 +62,24 @@
                          </table>
                     </div>
                </div>
+               <div class="col-12 text-center">
+                <h6 id="title">Canviar color de la taula</h6>
+                <div class="mx-auto d-block">
+                    <button type="button" id="red_table" class="btn btn-danger">Vermell</button>
+                    <button type="button" id="blue_table" class="btn btn-info">Blau</button>
+                    <button type="button" id="green_table" class="btn btn-success">Verd</button>
+                    <button type="button" id="yellow_table" class="btn btn-warning">Groc</button>
+                </div>
+                </div>
+                <div class="col-12 text-center mt-4">
+                    <h6 id="title">Canviar color de fons</h6>
+                    <div class="mx-auto d-block">
+                        <button type="button" id="oscur" class="btn btn-dark">Oscur</button>
+                        <button type="button" id="groc" class="btn btn-warning">Groc</button>
+                        <button type="button" id="blau" class="btn btn-secondary">Gris</button>
+                        <button type="button" id="blanc" class="btn btn-light">Blanc</button>
+                    </div>
+                </div>
           </div>
      </div>
 </section>
