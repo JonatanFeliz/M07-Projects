@@ -20,11 +20,11 @@ use Response\Response;
 require_once(get_model_dir() . '/model.php');
 use function Model\get_csv_path;
 use function Model\read_table;
-use function Model\add_blog_message;
+use function Model\add_blog_new;
 use function Model\add_new_user;
 use function Model\get_images;
 use function Model\add_new_team;
-use function Model\delete_team;
+use function Model\delete_new;
 
 require_once(get_view_dir() . '/view.php');
 use function View\get_template_path;
@@ -56,7 +56,22 @@ function blog(Request $request, Context $context): array {
 
     // 1. If request is POST, add data
     if ($request->method == 'POST') {
-        add_blog_message( get_csv_path('blog'), $request->parameters['message'] );
+        $delete  = $request->parameters['esborrar'];
+        $message = $request->parameters['message'];
+
+        if ($delete == "si") {
+            delete_new(get_csv_path('blog'));
+
+            if ($message != "") {
+                add_blog_new( get_csv_path('blog'), $message );
+            }
+            
+        }
+        else{
+            add_blog_new( get_csv_path('blog'), $message );
+        }
+
+        
     }
 
     // 2. Get data
@@ -66,7 +81,7 @@ function blog(Request $request, Context $context): array {
     $pretty_blog = prettify_blog($blog);
 
     // 4. Fill template with data
-    $blog_body = render_template(get_template_path('/body/blog'),
+    $blog_body = render_template(get_template_path('/body/admin/blog'),
                                  ['blog_table' => $pretty_blog]);
     $blog_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Blog',
@@ -113,7 +128,7 @@ function data(Request $request, Context $context): array {
     $manga_table = read_table(get_csv_path('liga'));
 
     // 2. Fill template with data
-    $data_body = render_template(get_template_path('/body/data'),
+    $data_body = render_template(get_template_path('/body/admin/data'),
                                 ['manga_table' => $manga_table]);
 
     $data_view = render_template(get_template_path('/skeleton/skeleton'),

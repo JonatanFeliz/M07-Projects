@@ -64,6 +64,17 @@
                     echo View\get_html_body2($blog_table->body);
                ?>
           </div>
+          <div class="row">
+               <div class="col-12 text-center">
+                    <h6 id="title">Canviar color del titol de la taula</h6>
+                    <div class="mx-auto d-block">
+                         <button type="button" id="red_blog" class="btn btn-danger">Vermell</button>
+                         <button type="button" id="blue_blog" class="btn btn-info">Blau</button>
+                         <button type="button" id="green_blog" class="btn btn-success">Verd</button>
+                         <button type="button" id="yellow_blog" class="btn btn-warning">Groc</button>
+                    </div>
+               </div>
+          </div>
      </div>
 </section>
 

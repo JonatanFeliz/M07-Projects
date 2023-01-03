@@ -114,8 +114,8 @@ function get_html_row2(array $row): string {
      $time = $td_tags_array["Timestamp"];
      $new = $td_tags_array["Message"];
      $html_row   = "<div class='card col-8 mb-3'> 
-                         <h5 class='card-header'> $time</h5>
-                         <div class='card-body'>
+                         <h5 class='card-header bg-title'> $time</h5>
+                         <div class='card-body bg-body'>
                               <p class='card-text'> $new </p>
                          </div> 
                     </div>" . PHP_EOL;

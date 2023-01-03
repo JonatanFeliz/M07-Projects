@@ -39,7 +39,7 @@ function read_table(string $csv_filename): Table {
 }
 
 // ----------------------------------------------------------------------------
-function add_blog_message(string $csv_filename, string $message): void {
+function add_blog_new(string $csv_filename, string $message): void {
 
     // 1. Read Table
     $blog_data = Table::readCSV($csv_filename);
@@ -52,6 +52,18 @@ function add_blog_message(string $csv_filename, string $message): void {
     $blog_data->prependRow([$timestamp_str , $message]);
 
     // 4. Write Table
+    $blog_data->writeCSV($csv_filename);
+}
+
+// ----------------------------------------------------------------------------
+function delete_new(string $csv_filename): void{
+    // 1. Read Table
+    $blog_data = Table::readCSV($csv_filename);
+
+    // 2. Delete new
+    array_pop($blog_data->body);
+
+    // 3. Write Table
     $blog_data->writeCSV($csv_filename);
 }
 
@@ -114,18 +126,5 @@ function add_new_team(string $csv_filename, string $position, string $team, stri
     $blog_data->prependRow([$position , $team, $points]);
 
     // 5. Write Table
-    $blog_data->writeCSV($csv_filename);
-}
-
-// ----------------------------------------------------------------------------
-function delete_team(string $csv_filename): void{
-
-    // 1. Read Table
-    $blog_data = Table::readCSV($csv_filename);
-
-    // 2. Delete last row
-    array_pop($blog_data->body);
-
-    // 3. Write Table
     $blog_data->writeCSV($csv_filename);
 }

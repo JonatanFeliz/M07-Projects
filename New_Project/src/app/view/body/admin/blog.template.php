@@ -28,7 +28,7 @@
                     </li>
                </ul>
                <form class="d-flex">
-                    <img src="./user.png" width="64px" height="66px" alt="User">
+                    <img src="/img/user.png" width="64px" height="66px" alt="User">
                </form>
           </div>
      </div>
@@ -64,6 +64,14 @@
                     echo View\get_html_body2($blog_table->body);
                ?>
           </div>
+
+          <form method="post" class="mt-5 text-center">
+               Afegir una noticia:  <input type = "text" name = "message"/>
+               <select name="esborrar" class="d-none">
+                    <option value="no" selected>No</option>
+               </select>
+               <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
      </div>
 </section>
 

@@ -1,23 +1,25 @@
 $(document).ready(function(){
 
+    // Data
+
     // Change body color
 
-    $("#oscur").click(()=>{
+    $(".oscur").click(()=>{
         $("body").css("background", "black");
         $("#title").css("color", "white");
     })
 
-    $("#groc").click(()=>{
+    $(".groc").click(()=>{
         $("body").css("background", "yellow");
         $("#title").css("color", "brown");
     })
 
-    $("#blau").click(()=>{
+    $(".blau").click(()=>{
         $("body").css("background", "grey");
         $("#title").css("color", "yellow");
     })
 
-    $("#blanc").click(()=>{
+    $(".blanc").click(()=>{
         $("body").css("background", "none");
         $("#title").css("color", "black");
     })
@@ -54,5 +56,22 @@ $(document).ready(function(){
         $("table").removeClass("table-danger");
 
         $("table").addClass("table-warning");
+    })
+
+    // Blog
+    $("#red_blog").click(()=>{
+        $(".bg-title").css("background", "red");
+    })
+
+    $("#blue_blog").click(()=>{
+        $(".bg-title").css("background", "blue");
+    })
+
+    $("#green_blog").click(()=>{
+        $(".bg-title").css("background", "green");
+    })
+
+    $("#yellow_blog").click(()=>{
+        $(".bg-title").css("background", "yellow");
     })
 })

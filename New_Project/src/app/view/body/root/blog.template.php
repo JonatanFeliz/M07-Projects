@@ -28,20 +28,11 @@
                     </li>
                </ul>
                <form class="d-flex">
-                    <img src="./user.png" width="64px" height="66px" alt="User">
+                    <img src="/img/user.png" width="64px" height="66px" alt="User">
                </form>
           </div>
      </div>
 </nav>
-
-
-<!--<h1> Blog </h1>
-
-<form method="post">
-     Add a message:  <input type = "text" name = "message"/>
-</form>
-
-<br>-->
 
 <!--Body-->
 <section>
@@ -64,6 +55,16 @@
                     echo View\get_html_body2($blog_table->body);
                ?>
           </div>
+          <form method="post" class="mt-5 text-center">
+               Afegir una noticia:  <input type = "text" name = "message"/><br><br>
+               Vols esborrar una noticia?
+               <select name="esborrar">
+                    <option value="no">No</option>
+                    <option value="si">Si</option>
+               </select>
+               <br>
+               <button type="submit" class="btn btn-primary mt-3 mb-3">Enviar</button>
+          </form>
      </div>
 </section>
 

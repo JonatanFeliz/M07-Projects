@@ -28,7 +28,7 @@
                     </li>
                </ul>
                <form class="d-flex">
-                    <img src="./user.png" width="64px" height="66px" alt="User">
+                    <img src="/img/user.png" width="64px" height="66px" alt="User">
                </form>
           </div>
      </div>
@@ -63,6 +63,26 @@
 
                     echo View\get_html_body2($blog_table->body);
                ?>
+          </div>
+          <div class="row">
+               <div class="col-12 text-center">
+                    <h6 id="title">Canviar color del titol de la taula</h6>
+                    <div class="mx-auto d-block">
+                         <button type="button" id="red_blog" class="btn btn-danger">Vermell</button>
+                         <button type="button" id="blue_blog" class="btn btn-info">Blau</button>
+                         <button type="button" id="green_blog" class="btn btn-success">Verd</button>
+                         <button type="button" id="yellow_blog" class="btn btn-warning">Groc</button>
+                    </div>
+               </div>
+               <div class="col-12 text-center mt-4">
+                    <h6 id="title">Canviar color de fons</h6>
+                    <div class="mx-auto d-block">
+                        <button type="button" class="btn btn-dark oscur">Oscur</button>
+                        <button type="button" class="btn btn-warning groc">Groc</button>
+                        <button type="button" class="btn btn-secondary blau">Gris</button>
+                        <button type="button" class="btn btn-light blanc">Blanc</button>
+                    </div>
+                </div>
           </div>
      </div>
 </section>

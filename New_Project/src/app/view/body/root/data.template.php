@@ -28,7 +28,7 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <img src="./user.png" width="64px" height="66px" alt="User">
+                <img src="/img/user.png" width="64px" height="66px" alt="User">
             </form>
         </div>
     </div>
