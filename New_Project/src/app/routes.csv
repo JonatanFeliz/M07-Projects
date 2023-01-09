@@ -2,10 +2,10 @@ path            | methods   | controller_function
                 | GET       | Controller\index      
 /index          | GET       | Controller\index      
 /blog           | GET, POST | Controller\blog       
-/gallery        | GET       | Controller\gallery    
+/gallery        | GET, POST | Controller\gallery    
 /gallery/:manga | GET       | Controller\manga      
 /data           | GET, POST | Controller\data       
-/web-service    | GET       | Controller\web_service
+/web-service    | GET, POST | Controller\web_service
 /login          | GET, POST | Controller\login 
 /register       | GET, POST | Controller\register  
 *any            | GET, POST | Controller\error_404  

@@ -33,3 +33,22 @@
         </div>
     </div>
 </nav>
+
+<!--Body-->
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+
+        <h1 class="text-center text-info mb-4">Web Service</h1>
+
+        <?php
+
+            require_once(__DIR__ . '/../../config.php');
+            use function Config\get_view_dir;
+
+            require_once(get_view_dir() . '/view.php');
+
+            echo View\show_web_service($webs_array);
+            
+        ?>
+    </div>
+</div>

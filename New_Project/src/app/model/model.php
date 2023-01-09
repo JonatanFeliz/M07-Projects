@@ -128,3 +128,9 @@ function add_new_team(string $csv_filename, string $position, string $team, stri
     // 5. Write Table
     $blog_data->writeCSV($csv_filename);
 }
+
+function get_web_service(): array {
+    $webs_array = json_decode( file_get_contents('https://www.balldontlie.io/api/v1/teams'), true );
+
+    return $webs_array;
+}

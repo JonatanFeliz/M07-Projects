@@ -123,6 +123,24 @@ function get_html_row2(array $row): string {
      return $html_row;
 }
 
+
+function show_web_service(array $row): void {
+
+     foreach ($row['data'] as $web) {
+
+         $city       = $web['city'];
+         $full_name  = $web['full_name'];
+
+        echo
+        "<div class='card w-25 mb-4 me-5 bg-success text-warning'>
+            <div class='card-body'>
+             <h5 class='card-title'>$city</h5>
+             <p class='card-text'>$full_name</p>
+             </div>
+         </div>" . PHP_EOL;
+     }
+}
+
 // 3. Convert table body to string
 // ----------------------------------------------------------------------------
 function get_html_body(array $body): string {

@@ -25,6 +25,7 @@ use function Model\add_new_user;
 use function Model\get_images;
 use function Model\add_new_team;
 use function Model\delete_new;
+use function Model\get_web_service;
 
 require_once(get_view_dir() . '/view.php');
 use function View\get_template_path;
@@ -81,7 +82,7 @@ function blog(Request $request, Context $context): array {
     $pretty_blog = prettify_blog($blog);
 
     // 4. Fill template with data
-    $blog_body = render_template(get_template_path('/body/admin/blog'),
+    $blog_body = render_template(get_template_path('/body/blog'),
                                  ['blog_table' => $pretty_blog]);
     $blog_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Blog',
@@ -128,7 +129,7 @@ function data(Request $request, Context $context): array {
     $manga_table = read_table(get_csv_path('liga'));
 
     // 2. Fill template with data
-    $data_body = render_template(get_template_path('/body/admin/data'),
+    $data_body = render_template(get_template_path('/body/data'),
                                 ['manga_table' => $manga_table]);
 
     $data_view = render_template(get_template_path('/skeleton/skeleton'),
@@ -225,7 +226,12 @@ function register(Request $request, Context $context): array {
 // ----------------------------------------------------------------------------
 function web_service(Request $request, Context $context): array {
 
-    $web_service_body = render_template(get_template_path('/body/web-service'), []);
+    // 1. Get data
+    $webs_array = get_web_service();
+
+    $web_service_body = render_template(get_template_path('/body/web-service'),
+                                 ['webs_array' => $webs_array]);
+                                 
     $web_service_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'Web Service',
                                   'body'  => $web_service_body]);
