@@ -1,6 +1,9 @@
 # M07 DWES WebApp README.md
 -------------------------------------------------------------------------------
 
+# Miembros: 
+PARJ | Pau Martinez - Anthony Reyes - Ruyou Hu Ye - Jonatan Feliz
+
 # About
 - This is an WebApp example for M07 DWES.
 
