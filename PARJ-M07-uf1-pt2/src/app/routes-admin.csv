@@ -1,0 +1,12 @@
+path            | methods   | controller_function   
+                | GET       | Controller_admin\index      
+/index          | GET       | Controller_admin\index      
+/blog           | GET, POST | Controller_admin\blog       
+/gallery        | GET, POST | Controller_admin\gallery
+/data           | GET, POST | Controller_admin\data       
+/web-service    | GET, POST | Controller_admin\web_service
+/login          | GET, POST | Controller_admin\login 
+/logout         | GET       | Controller_admin\logout
+/register       | GET, POST | Controller_admin\register
+/management     | GET, POST | Controller_admin\management
+*any            | GET, POST | Controller_admin\error_404  

@@ -1,0 +1,11 @@
+path            | methods   | controller_function   
+                | GET       | Controller_journalist\index      
+/index          | GET       | Controller_journalist\index      
+/blog           | GET, POST | Controller_journalist\blog       
+/gallery        | GET, POST | Controller_journalist\gallery
+/data           | GET, POST | Controller_journalist\data       
+/web-service    | GET, POST | Controller_journalist\web_service
+/login          | GET, POST | Controller_journalist\login
+/logout         | GET       | Controller_journalist\logout 
+/register       | GET, POST | Controller_journalist\register
+*any            | GET, POST | Controller_journalist\error_404  
