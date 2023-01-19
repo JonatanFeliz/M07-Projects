@@ -22,7 +22,6 @@ use function Model\get_csv_path;
 use function Model\read_table;
 use function Model\get_web_service;
 use function Model\get_images;
-use function Model\add_blog_new;
 use function Model\add_comment;
 
 require_once(get_view_dir() . '/view.php');

@@ -164,37 +164,20 @@ function management(Request $request, Context $context): array{
 
     if ($request->method == 'POST'){
 
-        if (isset($_POST['create'])) {
+        $user  = $request->parameters['username'];
+        $pass  = $request->parameters['password'];
+        $role  = $request->parameters['role'];
 
-            $user  = $request->parameters['username'];
-            $pass  = $request->parameters['password'];
-            $role  = $request->parameters['role'];
-
+        if(!empty($user) && !empty($pass)){
             $new_user = ['Username' => $user, 'Password' => $pass, 'Rol' => $role];
 
             $user_table = read_table(get_csv_path('users'));
-
+    
             $user_table->appendRow($new_user);
-
-            $user_table->writeCSV(get_csv_path('users'));    
+    
+            $user_table->writeCSV(get_csv_path('users'));
         }
 
-        if (isset($_POST['delete'])) {
-
-            $user  = $request->parameters['d_username'];
-
-            $user_table = read_table(get_csv_path('users'));
-
-            delete_user($user, $user_table);
-
-            // $new_user = ['Username' => $user, 'Password' => $pass, 'Rol' => $role];
-
-            // $user_table = read_table(get_csv_path('users'));
-
-            // $user_table->appendRow($new_user);
-
-            // $user_table->writeCSV(get_csv_path('users'));    
-        }
 
         $response = new Response();
         $response->set_redirection('/management');
@@ -203,6 +186,38 @@ function management(Request $request, Context $context): array{
     }
 
     $user_management_body = render_template(get_template_path('/body/admin/user_management'),[]);
+                                 
+    $user_management_view = render_template(get_template_path('/skeleton/skeleton'),
+                                 ['title' => 'User Management',
+                                  'body'  => $user_management_body]);
+
+    $response = new Response($user_management_view);
+    return [$response, $context];
+}
+
+
+// ----------------------------------------------------------------------------
+function management_delete(Request $request, Context $context): array{
+
+
+    if ($request->method == 'POST'){
+
+        $user  = $request->parameters['d_username'];
+
+        if(!empty($user)){
+            $user_table = read_table(get_csv_path('users'));
+
+            delete_user($user, $user_table);
+        }
+        
+
+        $response = new Response();
+        $response->set_redirection('/management_delete');
+
+        return [$response, $context];
+    }
+
+    $user_management_body = render_template(get_template_path('/body/admin/user_management_delete'),[]);
                                  
     $user_management_view = render_template(get_template_path('/skeleton/skeleton'),
                                  ['title' => 'User Management',

@@ -18,7 +18,7 @@
                     <a class="nav-link text-white" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/gallery">Gallery</a>
+                    <a class="nav-link text-white" href="/gallery">Galeria</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="/data">Data</a>
